@@ -1,2 +1,2 @@
 # Trikz-Site
-A website for trikz
+For code examples please see test.php
