@@ -15,7 +15,7 @@ class Users {
         $array = [];
         $i =0;
         foreach ($result as $item) {
-            $array[$i] = new User($item['steamid']);
+            $array[$i] = new SteamUser($item['steamid']);
             $i++;
         }
 
@@ -24,10 +24,10 @@ class Users {
 
     public static function Get($steamid64){
         $sql = "SELECT * FROM registered_users WHERE steamid = '$steamid64'";
-        return new User(mysqli_fetch_assoc( Database::Query($sql) )['steamid']);
+        return new SteamUser(mysqli_fetch_assoc( Database::Query($sql) )['steamid']);
     }
 
-    public static function Exists($steamid64) {
+    public static function Registered($steamid64) {
         $sql = "SELECT * FROM registered_users WHERE steamid = '$steamid64'";
         if (Database::Query($sql)->num_rows > 0) {
             return true;
@@ -48,7 +48,7 @@ class Users {
     }
 
     public static function Register($steamid64) {
-        if (!self::Exists($steamid64)) {
+        if (!self::Registered($steamid64)) {
             $sql = "INSERT INTO registered_users (steamid) VALUES ('$steamid64')";
             return Database::Query($sql);
         }
@@ -58,7 +58,7 @@ class Users {
     public static function CurrentUser() {
         global $steamprofile;
         if (isset($steamprofile['steamid'])) {
-            return new User($steamprofile['steamid']);
+            return new SteamUser($steamprofile['steamid']);
         }
         return false;
     }
