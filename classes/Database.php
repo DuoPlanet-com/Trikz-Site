@@ -5,10 +5,12 @@ class Database {
 
     public static $connection;
     public static $settings;
-
+    public static $steamKey;
 
     function __construct()
     {
+        global $steamauth;
+        self::$steamKey = $steamauth['apikey'];
         // Fetch and set database settings locally
         self::$settings = $this->Settings();
         // Establish connection
