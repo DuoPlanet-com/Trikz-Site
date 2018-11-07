@@ -11,7 +11,7 @@ new Database();
 require_once 'classes/Users.php';
 require_once 'classes/SteamUser.php';
 require_once 'classes/Page.php';
-
+require_once 'classes/Modules.php'
 
 
 ?>
