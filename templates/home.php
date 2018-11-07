@@ -16,11 +16,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
             <li class="nav-item dropdown">
-                <?php  Modules::Load("SteamLogin") ?>
+                <?php  Modules::Load("SteamLogin"); ?>
             </li>
 
         </ul>
