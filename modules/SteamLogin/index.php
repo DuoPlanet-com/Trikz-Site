@@ -18,7 +18,7 @@ if ($user = Users::CurrentUser()) {
                     <a class="dropdown-item" href="steamauth/logout.php">Logout</a>
                 </div>
             </li>
-            '.Modules::Load("DonateButton") . '
+            
     ';
 } else {
     // If we are not logged in, display login button

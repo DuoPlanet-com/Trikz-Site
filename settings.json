@@ -1,9 +1,25 @@
 {
+	"paypal": {
+		"client_id" : "AUzj64RwWjgOI0NOsF8uLp8tep66-kZihsqTwYIeTok7pu-b_XfMFtRs4_MoAXYe8_63GTbXgKUxmLUV",
+		"secret_id" : "EPj28VJ1kuc3hI3gl0hYIC2Z6A3R1FbnzPsgaLuMN8_h1HQ1J-DJ0CzD6RjhJuaw31-jH0y0ywS6kx6Q"
+	},
+	"steam": {
+		"api_key" : "96B9B1F7EAF8A94222B79928AEC5AB08",
+		"domain_name": "http://localhost/",
+		"login_url" : "index.php",
+		"logout_url" : "index.php"
+	},
     "database": {
-        "host": 	"localhost",
+		"host": "localhost",
 		"user": "root",
 		"password": "",
-		"port":		"3306",
-		"name":		"trikz"
-    }
+		"port": "3306",
+		"name": "trikz"
+	},
+	"VIP" : {
+		"price" : 10,
+		"currency" : "USD",
+		"name" : "VIP",
+		"days" : 28
+	}
 }
