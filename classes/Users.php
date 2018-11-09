@@ -79,4 +79,15 @@ class Users {
         return $result->response->players[0];
     }
 
+    public static function IsAdmin($steamid_64)
+    {
+        $admins = Settings::GetSettings()['admins'];
+        foreach ($admins as $adminid) {
+            if ($adminid == $steamid_64) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

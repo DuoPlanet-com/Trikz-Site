@@ -46,7 +46,7 @@ if (!$user = Users::CurrentUser()) {
 
     $sql = "SELECT * FROM vips WHERE steamid = '$id'";
 
-    if (Database::Query($sql)->num_rows == 0) {
+    if (($query = Database::Query($sql))->num_rows == 0) {
         try {
             $result = $payment->execute($execute,$paypal);
         } catch (Exception $e) {
@@ -59,13 +59,15 @@ if (!$user = Users::CurrentUser()) {
             $nextTime->add(new DateInterval('P' . $days . 'D'));
             $dateTimeStamp = $dateTime->format("Y-m-d H:m:s");
             $nextTimeStamp = $nextTime->format("Y-m-d H:m:s");
-            $sql = "INSERT INTO vips (steamid,timestamp_start,timestamp_end) VALUES ('$id','$dateTimeStamp.000000' ,'$nextTimeStamp.000000')";
+            $sid64 = $user->steamid64;
+            $sql = "INSERT INTO vips (steamid64, steamid,timestamp_start,timestamp_end) VALUES ('$sid64','$id','$dateTimeStamp.000000' ,'$nextTimeStamp.000000')";
             if (!DataBase::Query($sql)) {
                 $_GET['success'] = "false";
             }
             header("Location:index.php?ps=".$_GET['success']);
         }
     } else {
+        var_dump($query);
         header("Location:index.php?ps=false");
     }
 
