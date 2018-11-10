@@ -71,5 +71,9 @@ class Transferral {
         die("Error! transaction not found");
     }
 
+    public function Price() {
+        return $this->payment->transactions[0]->amount->total;
+    }
+
 
 }

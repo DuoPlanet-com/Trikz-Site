@@ -57,15 +57,19 @@ if (!$user = Users::CurrentUser()) {
         }
     } else {
         $price = $_POST['donationAmount'];
-        if (isset($settings['products'][$productName])) {
-            $checkout = new Checkout(
-                uniqid(),
-                $productName,
-                "",
-                $price,
-                $settings['products'][$productName]['currency'],
-                $steamId64);
-            header( "Location:". $checkout->Create());
+        if ($price >= 1) {
+            if (isset($settings['products'][$productName])) {
+                $checkout = new Checkout(
+                    uniqid(),
+                    $productName,
+                    "",
+                    $price,
+                    $settings['products'][$productName]['currency'],
+                    $steamId64);
+                header( "Location:". $checkout->Create());
+            } else {
+                header( "Location: index.php?ps=false");
+            }
         } else {
             header( "Location: index.php?ps=false");
         }

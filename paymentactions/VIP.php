@@ -1,4 +1,11 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: andre
+ * Date: 10-11-2018
+ * Time: 15:50
+ */
+
 if (!$user = Users::CurrentUser()) {
     header("Location:index.php?ps=false");
 } else {
@@ -43,3 +50,4 @@ if (!$user = Users::CurrentUser()) {
         }
     }
 }
+

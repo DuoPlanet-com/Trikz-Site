@@ -10,7 +10,7 @@
 if ($user = Users::CurrentUser()) {
 
     ?>
-    <p>You are logged in! <a href="checkout.php">BUY NOW!</a></p>
+    <p>You are logged in! <a href="checkout.php?product=VIP">BUY NOW!</a></p>
 
 
     <?php
