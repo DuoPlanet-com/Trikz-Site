@@ -34,18 +34,40 @@ require_once 'start.php';
 
 $settings = Settings::GetSettings();
 
+$productName = $_GET['product'];
 
 if (!$user = Users::CurrentUser()) {
     header("Location:index.php?ps=false");
 } else {
-   $checkout = new Checkout(uniqid(),"VIP","VIP",10,"USD");
+    $steamId64 = $user->steamid64;
+    $steamId = $user->steamid;
 
-    $id = $user->steamid;
-
-    $sql = "SELECT * FROM vips WHERE steamid = '$id'";
-    if (Database::Query($sql)->num_rows == 0) {
+    if ($productName != "donation") {
+        if (isset($settings['products'][$productName])) {
+            $checkout = new Checkout(
+                uniqid(),
+                $productName,
+                "",
+                $settings['products'][$productName]['price'],
+                $settings['products'][$productName]['currency'],
+                $steamId64);
             header( "Location:". $checkout->Create());
+        } else {
+            header( "Location: index.php?ps=false");
+        }
     } else {
-        header("Location: index.php?ps=false");
+        $price = $_POST['donationAmount'];
+        if (isset($settings['products'][$productName])) {
+            $checkout = new Checkout(
+                uniqid(),
+                $productName,
+                "",
+                $price,
+                $settings['products'][$productName]['currency'],
+                $steamId64);
+            header( "Location:". $checkout->Create());
+        } else {
+            header( "Location: index.php?ps=false");
+        }
     }
 }

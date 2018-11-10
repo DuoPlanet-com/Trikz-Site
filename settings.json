@@ -16,11 +16,23 @@
 		"port": "3306",
 		"name": "trikz"
 	},
-	"VIP" : {
-		"price" : 10,
-		"currency" : "USD",
-		"name" : "VIP",
-		"days" : 28
+	"products": {
+		"VIP" : {
+			"price" : 10,
+			"currency" : "USD",
+			"name" : "VIP",
+			"days" : 28,
+			"successUrl": "/pay.php?success=true",
+			"cancelUrl": "/pay.php?success=false"
+		},
+		"donation" : {
+			"price" : 10,
+			"currency" : "USD",
+			"name" : "donation",
+			"days" : 28,
+			"successUrl": "/pay.php?success=true",
+			"cancelUrl": "/pay.php?success=false"
+		}
 	},
 	"admins": [
 		"76561198075806077"

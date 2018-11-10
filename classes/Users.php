@@ -90,4 +90,39 @@ class Users {
         return false;
     }
 
+    public static function IsVIP($steamid_64) {
+        $sql = "SELECT * FROM `vips` WHERE `steamid64` = '$steamid_64'";
+        if ($query = Database::Query($sql)) {
+            if ($query->num_rows == 1) {
+                $row = $query->fetch_assoc();
+                if (new DateTime() < new DateTime($row['timestamp_end'])) {
+                    return true;
+                } else {
+                    $sql2 = "DELETE FROM `vips` WHERE `steamid64` = '$steamid_64'";
+                    if (!Database::Query($sql2)) {
+                        die("Unable to remove expired VIP");
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public static function VIPExpirationDate($steamid_64) {
+        $sql = "SELECT * FROM `vips` WHERE `steamid64` = '$steamid_64'";
+        if ($query = Database::Query($sql)) {
+            if ($query->num_rows == 1) {
+                $row = $query->fetch_assoc();
+                if (new DateTime() < new DateTime($row['timestamp_end'])) {
+                    return $row['timestamp_end'];
+                } else {
+                    $sql2 = "DELETE FROM `vips` WHERE `steamid64` = '$steamid_64'";
+                    if (!Database::Query($sql2)) {
+                        die("Unable to remove expired VIP");
+                    }
+                }
+            }
+        }
+        return "Expired";
+    }
 }

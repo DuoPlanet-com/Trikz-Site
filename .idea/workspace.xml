@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fda1e57d-0dc8-458b-8e9b-0a724fb0fc66" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/paypal/Checkout.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/legacy/checkout.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Footer/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Navbar/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/vips.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/paypal/Transferral.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/legacy/pay.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/DonateForm/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/paymentactions/VIP.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/paymentactions/donation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/checkout.php" afterPath="$PROJECT_DIR$/checkout.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home.php" afterPath="$PROJECT_DIR$/templates/home.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/Users.php" afterPath="$PROJECT_DIR$/classes/Users.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/paypal/Checkout.php" afterPath="$PROJECT_DIR$/classes/paypal/Checkout.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pay.php" afterPath="$PROJECT_DIR$/pay.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.json" afterPath="$PROJECT_DIR$/settings.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.php" afterPath="$PROJECT_DIR$/test.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +31,8 @@
       <file leaf-file-name="settings.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/settings.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+            <state relative-caret-position="119">
+              <caret line="7" column="41" lean-forward="true" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -38,24 +41,115 @@
       <file leaf-file-name="checkout.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/checkout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="708">
+              <caret line="64" column="22" lean-forward="false" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
               <folding>
                 <element signature="e#6#87#0#PHP" expanded="true" />
                 <element signature="e#90#111#0#PHP" expanded="true" />
-                <marker date="1541849503568" expanded="true" signature="941:981" ph="SELECT * FRO... vips" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/PaypalButton/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/DonateForm/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+            <state relative-caret-position="708">
+              <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
               <folding>
-                <marker date="1541850500437" expanded="true" signature="598:628" ph="SELECT * FRO... registered_users" />
+                <marker date="1541853364946" expanded="true" signature="598:628" ph="SELECT * FRO... registered_users" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Transferral.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/paypal/Transferral.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="29" column="20" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+              <folding>
+                <element signature="e#6#87#0#PHP" expanded="true" />
+                <element signature="e#89#112#0#PHP" expanded="true" />
+                <marker date="1541860326938" expanded="true" signature="1272:1330" ph="SELECT * FRO... transactions" />
+                <marker date="1541860326938" expanded="true" signature="1514:1589" ph="UPDATE `tran... " />
+                <marker date="1541860326938" expanded="true" signature="1876:1934" ph="SELECT * FRO... transactions" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pay.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pay.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+              <folding>
+                <element signature="e#6#87#0#PHP" expanded="true" />
+                <element signature="e#89#112#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="donation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/paymentactions/donation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VIP.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/paymentactions/VIP.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="26" column="69" lean-forward="false" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
+              <folding>
+                <marker date="1541860993629" expanded="true" signature="494:575" ph="UPDATE `vips... " />
+                <marker date="1541860993629" expanded="true" signature="854:894" ph="SELECT * FRO... vips" />
+                <marker date="1541860993629" expanded="true" signature="1525:1665" ph="INSERT INTO vips... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Users.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/Users.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1343">
+              <caret line="102" column="60" lean-forward="true" selection-start-line="102" selection-start-column="60" selection-end-line="102" selection-end-column="60" />
+              <folding>
+                <marker date="1541860018588" expanded="true" signature="154:184" ph="SELECT * FRO... registered_users" />
+                <marker date="1541860018588" expanded="true" signature="480:539" ph="SELECT * FRO... registered_users" />
+                <marker date="1541860018588" expanded="true" signature="703:762" ph="SELECT * FRO... registered_users" />
+                <marker date="1541860018588" expanded="true" signature="1376:1436" ph="INSERT INTO registered_users... " />
+                <marker date="1541860018588" expanded="true" signature="2631:2685" ph="SELECT * FRO... vips" />
+                <marker date="1541860018588" expanded="true" signature="2984:3036" ph="DELETE FROM " />
+                <marker date="1541860018588" expanded="true" signature="3320:3374" ph="SELECT * FRO... vips" />
+                <marker date="1541860018588" expanded="true" signature="3690:3742" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -83,13 +177,10 @@
         <option value="$PROJECT_DIR$/modules/PaypalButton/index.php" />
         <option value="$PROJECT_DIR$/steamauth/SteamConfig.php" />
         <option value="$PROJECT_DIR$/start.php" />
-        <option value="$PROJECT_DIR$/classes/Users.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/settings.json" />
         <option value="$PROJECT_DIR$/classes/Settings.php" />
         <option value="$PROJECT_DIR$/steamauth/logout.php" />
         <option value="$PROJECT_DIR$/admin.php" />
-        <option value="$PROJECT_DIR$/pay.php" />
         <option value="$PROJECT_DIR$/modules/VIPs/index.php" />
         <option value="$PROJECT_DIR$/modules/Visits/index.php" />
         <option value="$PROJECT_DIR$/modules/VisitLogger/index.php" />
@@ -98,10 +189,15 @@
         <option value="$PROJECT_DIR$/templates/home.php" />
         <option value="$PROJECT_DIR$/modules/Footer/index.php" />
         <option value="$PROJECT_DIR$/templates/vips.php" />
-        <option value="$PROJECT_DIR$/checkout.php" />
         <option value="$PROJECT_DIR$/checkout2.php" />
-        <option value="$PROJECT_DIR$/classes/paypal/Checkout.php" />
         <option value="$PROJECT_DIR$/test.php" />
+        <option value="$PROJECT_DIR$/classes/Users.php" />
+        <option value="$PROJECT_DIR$/classes/paypal/Transferral.php" />
+        <option value="$PROJECT_DIR$/pay.php" />
+        <option value="$PROJECT_DIR$/classes/paypal/Checkout.php" />
+        <option value="$PROJECT_DIR$/paymentactions/VIP.php" />
+        <option value="$PROJECT_DIR$/settings.json" />
+        <option value="$PROJECT_DIR$/checkout.php" />
       </list>
     </option>
   </component>
@@ -186,6 +282,20 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="paymentactions" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trikz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trikz" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -218,6 +328,24 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PaypalButton" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trikz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trikz" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="legacy" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -236,6 +364,24 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trikz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trikz" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="paypal" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -243,9 +389,11 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\wamp\www\trikz" />
       <recent name="F:\wamp\www\trikz\legacy" />
       <recent name="F:\wamp\www\trikz\modules\PaypalButton" />
     </key>
@@ -352,12 +500,12 @@
       <workItem from="1541711741662" duration="4044000" />
       <workItem from="1541716573345" duration="12215000" />
       <workItem from="1541776006223" duration="193000" />
-      <workItem from="1541845390582" duration="4641000" />
+      <workItem from="1541845390582" duration="15945000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64848000" />
+    <option name="totallyTimeSpent" value="76152000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -395,53 +543,12 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/settings.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/Settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/Database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/SteamUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="62" column="26" lean-forward="false" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
           <folding>
-            <marker date="1541850500437" expanded="true" signature="598:628" ph="SELECT * FRO... registered_users" />
+            <marker date="1541853364946" expanded="true" signature="598:628" ph="SELECT * FRO... registered_users" />
           </folding>
         </state>
       </provider>
@@ -498,7 +605,7 @@
         <state relative-caret-position="714">
           <caret line="42" column="128" lean-forward="false" selection-start-line="42" selection-start-column="128" selection-end-line="42" selection-end-column="128" />
           <folding>
-            <marker date="1541850500437" expanded="true" signature="598:628" ph="SELECT * FRO... registered_users" />
+            <marker date="1541853364946" expanded="true" signature="598:628" ph="SELECT * FRO... registered_users" />
           </folding>
         </state>
       </provider>
@@ -541,16 +648,6 @@
         <state relative-caret-position="323">
           <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/SteamUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="62" column="26" lean-forward="false" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -618,25 +715,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/PaypalButton/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/Users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -780,34 +862,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pay.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="true" />
-            <element signature="e#89#112#0#PHP" expanded="true" />
-            <marker date="1541767382186" expanded="true" signature="1027:1052" ph="SELECT * FRO... vips" />
-            <marker date="1541767382186" expanded="true" signature="1027:1067" ph="SELECT * FRO... vips" />
-            <marker date="1541767382186" expanded="true" signature="1705:1802" ph="INSERT INTO vips... " />
-            <marker date="1541767382186" expanded="true" signature="1705:1811" ph="INSERT INTO vips... " />
-            <marker date="1541767382186" expanded="true" signature="1705:1818" ph="INSERT INTO vips... " />
-            <marker date="1541767382186" expanded="true" signature="1705:1845" ph="INSERT INTO vips... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/paypal/Checkout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="true" />
-            <element signature="e#468#489#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/legacy/checkout.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -819,33 +873,148 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings.json">
+    <entry file="file://$PROJECT_DIR$/legacy/pay.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+        <state relative-caret-position="356">
+          <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
+            <element signature="e#89#112#0#PHP" expanded="true" />
+            <marker date="1541851728959" expanded="true" signature="1027:1052" ph="SELECT * FRO... vips" />
+            <marker date="1541851728959" expanded="true" signature="1027:1067" ph="SELECT * FRO... vips" />
+            <marker date="1541851728959" expanded="true" signature="1705:1802" ph="INSERT INTO vips... " />
+            <marker date="1541851728959" expanded="true" signature="1705:1811" ph="INSERT INTO vips... " />
+            <marker date="1541851728959" expanded="true" signature="1705:1818" ph="INSERT INTO vips... " />
+            <marker date="1541851728959" expanded="true" signature="1705:1845" ph="INSERT INTO vips... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/SteamUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="674">
+          <caret line="62" column="26" lean-forward="false" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/checkout.php">
+    <entry file="file://$PROJECT_DIR$/classes/paypal/Checkout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="298">
+          <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
           <folding>
             <element signature="e#6#87#0#PHP" expanded="true" />
-            <element signature="e#90#111#0#PHP" expanded="true" />
-            <marker date="1541849503568" expanded="true" signature="941:981" ph="SELECT * FRO... vips" />
+            <element signature="e#468#489#0#PHP" expanded="true" />
+            <marker date="1541860962938" expanded="true" signature="2703:2775" ph="INSERT INTO " />
+            <marker date="1541860962938" expanded="true" signature="2703:2839" ph="INSERT INTO " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/paymentactions/VIP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="69" lean-forward="false" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
+          <folding>
+            <marker date="1541860993629" expanded="true" signature="494:575" ph="UPDATE `vips... " />
+            <marker date="1541860993629" expanded="true" signature="854:894" ph="SELECT * FRO... vips" />
+            <marker date="1541860993629" expanded="true" signature="1525:1665" ph="INSERT INTO vips... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        <state relative-caret-position="708">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding>
-            <marker date="1541850500437" expanded="true" signature="598:628" ph="SELECT * FRO... registered_users" />
+            <marker date="1541853364946" expanded="true" signature="598:628" ph="SELECT * FRO... registered_users" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="41" lean-forward="true" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/paypal/Transferral.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="29" column="20" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
+            <element signature="e#89#112#0#PHP" expanded="true" />
+            <marker date="1541860326938" expanded="true" signature="1272:1330" ph="SELECT * FRO... transactions" />
+            <marker date="1541860326938" expanded="true" signature="1514:1589" ph="UPDATE `tran... " />
+            <marker date="1541860326938" expanded="true" signature="1876:1934" ph="SELECT * FRO... transactions" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/paymentactions/donation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="102" column="60" lean-forward="true" selection-start-line="102" selection-start-column="60" selection-end-line="102" selection-end-column="60" />
+          <folding>
+            <marker date="1541860018588" expanded="true" signature="154:184" ph="SELECT * FRO... registered_users" />
+            <marker date="1541860018588" expanded="true" signature="480:539" ph="SELECT * FRO... registered_users" />
+            <marker date="1541860018588" expanded="true" signature="703:762" ph="SELECT * FRO... registered_users" />
+            <marker date="1541860018588" expanded="true" signature="1376:1436" ph="INSERT INTO registered_users... " />
+            <marker date="1541860018588" expanded="true" signature="2631:2685" ph="SELECT * FRO... vips" />
+            <marker date="1541860018588" expanded="true" signature="2984:3036" ph="DELETE FROM " />
+            <marker date="1541860018588" expanded="true" signature="3320:3374" ph="SELECT * FRO... vips" />
+            <marker date="1541860018588" expanded="true" signature="3690:3742" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pay.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
+            <element signature="e#89#112#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/checkout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="708">
+          <caret line="64" column="22" lean-forward="false" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
+            <element signature="e#90#111#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/PaypalButton/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/DonateForm/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>

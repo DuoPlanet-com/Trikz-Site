@@ -9,17 +9,18 @@
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 
-require 'classes/Settings.php';
-require 'classes/Users.php';
-require 'steamauth/steamauth.php';
-require 'steamauth/userInfo.php';
-require 'steamauth/SteamConfig.php';
+require_once 'classes/paypal/Transferral.php';
+require_once 'classes/Settings.php';
+require_once 'classes/Users.php';
+require_once 'steamauth/steamauth.php';
+require_once 'steamauth/userInfo.php';
+require_once 'steamauth/SteamConfig.php';
 require_once 'classes/Database.php';
 new Database();
 require_once 'classes/SteamUser.php';
 require_once 'classes/Page.php';
 require_once 'classes/Modules.php';
-require 'start.php';
+require_once 'start.php';
 
 
 if (!isset($_GET['success'],$_GET['paymentId'],$_GET['PayerID'])) {
@@ -33,42 +34,6 @@ if ((bool)$_GET['success'] === false) {
 $paymentId = $_GET['paymentId'];
 $payerId = $_GET['PayerID'];
 
-$payment = Payment::get($paymentId,$paypal);
+$transferral = new Transferral($payerId,$paymentId);
 
-$execute = new PaymentExecution();
-$execute->setPayerId($payerId);
-
-if (!$user = Users::CurrentUser()) {
-    header("Location:index.php?ps=false");
-} else {
-
-    $id = $user->steamid;
-
-    $sql = "SELECT * FROM vips WHERE steamid = '$id'";
-
-    if (($query = Database::Query($sql))->num_rows == 0) {
-        try {
-            $result = $payment->execute($execute,$paypal);
-        } catch (Exception $e) {
-            die($e);
-        }
-        if ($_GET['success'] == "true") {
-            $dateTime = new DateTime();
-            $days = (int) Settings::GetSettings()['VIP']['days'];
-            $nextTime = new DateTime();
-            $nextTime->add(new DateInterval('P' . $days . 'D'));
-            $dateTimeStamp = $dateTime->format("Y-m-d H:m:s");
-            $nextTimeStamp = $nextTime->format("Y-m-d H:m:s");
-            $sid64 = $user->steamid64;
-            $sql = "INSERT INTO vips (steamid64, steamid,timestamp_start,timestamp_end) VALUES ('$sid64','$id','$dateTimeStamp.000000' ,'$nextTimeStamp.000000')";
-            if (!DataBase::Query($sql)) {
-                $_GET['success'] = "false";
-            }
-            header("Location:index.php?ps=".$_GET['success']);
-        }
-    } else {
-        var_dump($query);
-        header("Location:index.php?ps=false");
-    }
-
-}
+include 'paymentactions/'.$transferral->Product().'.php';

@@ -27,6 +27,12 @@ require_once 'start.php';
  */
 
 
+/** Need to utilize settings? */
+$settings = Settings::GetSettings(); // Grab the settings from settings.json as multi-dimensional array.
+var_dump($settings); // Display available settings
+$settings['database']['host']; // Returns the database host. I.e:'localhost'
+
+
 /** Grab user data from steamid64 */
 $user = new SteamUser("76561198075806077"); // Input is steamid 64 bit. Must be a string since php operates on 32 bit
 $user->personaName; // Returns 'Mr. Somebody' as it is my personaname on steam
@@ -61,14 +67,6 @@ Users::GrabSteamData("76561198075806077"); // Returns an object. Example: Users:
 
 /** What page are we on? */
 // $page->PageString() // Returns 'home' if none are specified.
-
-
-/** Want to create a payment? */
-// First we create a 'Checkout' this will give a link to the appropriate paypal site.
-// $checkout = new Checkout(uniqid(),"ProductName","ProductDescription",100,"DKK");
-// Then we send the user to the link created by the checkout class
-// $link = $checkout->Create(); // Returns an URL to paypal.
-// header("Location: " . $checkout->Create()); // Redirect to the paypal link.
 
 // || For testing ||
 // vv             vv
