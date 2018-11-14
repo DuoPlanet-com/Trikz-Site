@@ -28,14 +28,14 @@ require_once 'start.php';
 
 
 /** Need to utilize settings? */
-$settings = Settings::GetSettings(); // Grab the settings from settings.json as multi-dimensional array.
-var_dump($settings); // Display available settings
-$settings['database']['host']; // Returns the database host. I.e:'localhost'
+$settings = Settings::GetSettings();// Grab the settings from settings.json as multi-dimensional array.
+var_dump($settings);                // Display available settings
+$settings['database']['host'];      // Returns the database host. I.e:'localhost'
 
 
 /** Grab user data from steamid64 */
-$user = new SteamUser("76561198075806077"); // Input is steamid 64 bit. Must be a string since php operates on 32 bit
-$user->personaName; // Returns 'Mr. Somebody' as it is my personaname on steam
+$user = new SteamUser("76561198075806077");   // Input is steamid 64 bit. Must be a string since php operates on 32 bit
+$user->personaName;                                     // Returns 'Mr. Somebody' as it is my personaname on steam
 /** List of data on the SteamUser */
 var_dump($user);
 /** Grab the user that is currently online */
@@ -46,14 +46,14 @@ $user->avatarFull;              // Returns the profile image in full size
 
 
 /** Converting steamids */
-Users::SteamID("76561198075806077"); // Returns STEAM_0:1:57770174. Note php is 32 bit and thus the id must be a string, otherwise php wont be able to process it!
+Users::SteamID("76561198075806077");    // Returns STEAM_0:1:57770174. Note php is 32 bit and thus the id must be a string, otherwise php wont be able to process it!
 Users::SteamID32("STEAM_0:1:57770174"); // Returns [U:1:115540349]
 
 
 /** Grabbing registered users */
-Users::All(); // Grabs all users as an array of 'SteamUser' objects.
+Users::All();                                     // Grabs all users as an array of 'SteamUser' objects.
 Users::Registered("76561198075806077"); // Returns true if user is registered and false if it does not exist
-Users::Get("76561198075806077"); // Grabs a user from the database and returns as SteamUser object.
+Users::Get("76561198075806077");        // Grabs a user from the database and returns as SteamUser object.
 
 
 /** Registering new users */
@@ -68,8 +68,22 @@ Users::GrabSteamData("76561198075806077"); // Returns an object. Example: Users:
 /** What page are we on? */
 // $page->PageString() // Returns 'home' if none are specified.
 
+
+/** Is a user also a donor? */
+Users::IsDonor("76561198075806077");    // Returns false if not. Returns int if true. Integer represent the amount the user has donated
+// $user->IsDonor();                              // Returns false if not. Returns int if true. Integer represent the amount the user has donated
+
+
+/** Total amount donated */
+Users::Donations(); // Returns float representing the amount donated.
+
+
+/** Total product revenue */
+Users::Revenue("VIP"); // Returns float representing the revenue earned from the 'VIP' product.
 // || For testing ||
 // vv             vv
+
+
 
 ?>
 

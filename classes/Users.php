@@ -125,4 +125,49 @@ class Users {
         }
         return "Expired";
     }
+
+    public static function IsDonor($steamid_64) {
+        $sql = "SELECT * FROM `donors` WHERE `steamid64` = '$steamid_64'";
+        if ($query = Database::Query($sql)) {
+            if ($query->num_rows > 0) {
+                $row = $query->fetch_assoc();
+                if ($row['amount'] > 0) {
+                    return $row['amount'];
+                }
+            }
+        } else {
+            die("MySQL error! Failed to query donors");
+        }
+        return false;
+    }
+
+    public static function Donations() {
+        $sql = "SELECT * FROM `donors`";
+        $amount = 0;
+        if ($query = Database::Query($sql)) {
+            foreach ($query as $row) {
+                $amount+= $row['amount'];
+            }
+        } else {
+            die("Query failed! Unable to retrieve donorlist");
+        }
+        return $amount;
+    }
+
+    public static function Revenue($productString) {
+        $amount = 0;
+        $sql = "SELECT * FROM `transactions` WHERE `product` = '$productString'";
+        if ($query = Database::Query($sql)) {
+            foreach ($query as $row) {
+                if ($row['status'] == "closed") {
+                    $amount+= $row['price'];
+                }
+            }
+        } else {
+            die("Query failed! Unable to retrieve transactions");
+        }
+        return $amount;
+
+    }
+
 }

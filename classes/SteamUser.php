@@ -64,6 +64,30 @@ class SteamUser {
         }
     }
 
+    public function IsDonor() {
+
+        // Set SQL statement
+        $steamid_64 = $this->steamid64;
+        $sql = "SELECT * FROM `donors` WHERE `steamid64` = '$steamid_64'";
+
+        // Query database
+        if ($query = Database::Query($sql)) {
+            // Check if any entry was found
+            if ($query->num_rows > 0) {
+                // Fetch row of data as array
+                $row = $query->fetch_assoc();
+                // Check amount pledged and return
+                if ($row['amount'] > 0) {
+                    return $row['amount'];
+                }
+            }
+        } else {
+            die("MySQL error! Failed to query donors");
+        }
+        // Return false if no entry was found or if the amount pledged is 0
+        return false;
+    }
+
 
 
 
