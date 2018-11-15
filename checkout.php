@@ -45,7 +45,6 @@ if (!$user = Users::CurrentUser()) {
     if ($productName != "donation") {
         if (isset($settings['products'][$productName])) {
             $checkout = new Checkout(
-                uniqid(),
                 $productName,
                 "",
                 $settings['products'][$productName]['price'],
@@ -60,7 +59,6 @@ if (!$user = Users::CurrentUser()) {
         if ($price >= 1) {
             if (isset($settings['products'][$productName])) {
                 $checkout = new Checkout(
-                    uniqid(),
                     $productName,
                     "",
                     $price,

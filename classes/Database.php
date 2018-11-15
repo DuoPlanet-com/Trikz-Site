@@ -18,7 +18,11 @@ class Database {
     }
 
     public static function Query($query) {
-        return mysqli_query(self::$connection,$query);
+        $result = mysqli_query(self::$connection,$query);
+        if (!$result) {
+            die("MySQL error! Failed to query ; " . $query);
+        }
+        return $result;
     }
 
     function Settings(){

@@ -27,6 +27,15 @@ use PayPal\Api\Transaction;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Payment;
 
+/**
+ * Class Checkout sets up transactions and handles them before they are paid.
+ *
+ * The class logs transactions as 'open', which means not yet paid,
+ *     assign it with a unique transaction id, which will be used as invoice number
+ *     and sends it, along with the price, description and currency used, to paypal.
+ *
+ * @author Andreas M. Henriksen <AndreasHenriksen@yahoo.dk>
+ */
 class Checkout {
 
     private
@@ -37,11 +46,17 @@ class Checkout {
         $amount,
         $transaction,
         $redirectUrl,
-        $payment;
+        $payment,
+        $transactionId;
 
 
-    public function __construct($transactionId, $productName, $productDescription, $amountPrice, $currency,$steamId64)
+    public function __construct($productName, $productDescription, $amountPrice, $currency,$steamId64)
     {
+        $id = $this->CreateID();
+        while (!$this->CheckID($id)) {
+            $id = $this->CreateID();
+        }
+        $this->transactionId = $id;
         $settings = Settings::GetSettings();
         $sUrl = $settings['products'][$productName]['successUrl'];
         $cUrl = $settings['products'][$productName]['cancelUrl'];
@@ -73,7 +88,7 @@ class Checkout {
         $this->transaction->setAmount($this->amount)
             ->setItemList($this->itemList)
             ->setDescription($productDescription)
-            ->setInvoiceNumber($transactionId);
+            ->setInvoiceNumber($this->transactionId);
 
         $this->redirectUrl = new RedirectUrls();
         $this->redirectUrl->setReturnUrl(SITE_URL . $sUrl)
@@ -85,16 +100,10 @@ class Checkout {
             ->setRedirectUrls($this->redirectUrl)
             ->setTransactions([$this->transaction]);
 
-        if (!$this->LogTransaction($transactionId,$steamId64,$productName,$amountPrice)) {
+        if (!$this->LogTransaction($steamId64,$productName,$amountPrice)) {
             die("Could not log transaction!");
         }
 
-    }
-
-    function LogTransaction($transactionId,$steamId64,$product,$price) {
-        $sql = "INSERT INTO `transactions` (`id`,`steamid64`,`product`,`price`,`status`) VALUES ('$transactionId','$steamId64','$product',$price,'open')";
-        var_dump($sql);
-        return Database::Query($sql);
     }
 
     public function Create() {
@@ -105,5 +114,32 @@ class Checkout {
             die($e);
         }
         return $this->payment->getApprovalLink();
+    }
+
+    function LogTransaction($steamId64,$product,$price) {
+        $id = $this->transactionId;
+        $sql = "INSERT INTO `transactions` (`id`,`steamid64`,`product`,`price`,`status`) VALUES ('$id','$steamId64','$product',$price,'open')";
+        var_dump($sql);
+        return Database::Query($sql);
+    }
+
+    function CreateID() {
+        $result = "";
+        $length = 16;
+        for ($i=0; $i < $length; $i++) {
+            $result.= dechex(mt_rand(0,$length-1));
+        }
+        var_dump($result);
+        return $result;
+    }
+
+    function CheckID($id) {
+        $sql = "SELECT * FROM `transactions` WHERE `id` = '$id'";
+        if ($query = Database::Query($sql)) {
+            if ($query->num_rows == 0) {
+                return true;
+            }
+        }
+        return false;
     }
 }

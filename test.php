@@ -84,6 +84,5 @@ Users::Revenue("VIP"); // Returns float representing the revenue earned from the
 // vv             vv
 
 
-
 ?>
 
