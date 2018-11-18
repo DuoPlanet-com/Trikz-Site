@@ -1,12 +1,27 @@
 <?php
 require_once 'Settings.php';
 
+/**
+ * Class Database handles SQL queries and the database connection.
+ *
+ * Upon running the constructor, settings from settings.json will be
+ *     read and used to establish a connection to the database.
+ *     Please ensure the settings are correct in settings.json.
+ *     This condenses regular SQL queries into a single static
+ *     function called Query( $sql )
+ *
+ * @author Andreas M. Henriksen <AndreasHenriksen@yahoo.dk>
+ */
 class Database {
 
-    public static $connection;
-    public static $settings;
-    public static $steamKey;
+    public static
+        $connection,
+        $settings,
+        $steamKey;
 
+    /**
+     * Grabs the settings from settings.json and establishes a connection to the database.
+     */
     function __construct()
     {
         global $steamauth;
@@ -17,6 +32,16 @@ class Database {
         self::$connection = $this->Connection();
     }
 
+    /**
+     * Queries the database returning the result.
+     *
+     * Uses the previously established connection to query the database.
+     *     Note that you must have run the constructor, in order for
+     *     this to work.
+     *
+     * @param string $query - The SQL statement.
+     * @return mysqli_result
+     */
     public static function Query($query) {
         $result = mysqli_query(self::$connection,$query);
         if (!$result) {
@@ -25,11 +50,21 @@ class Database {
         return $result;
     }
 
+    /**
+     * Returns the database part of the settings in settings.json as array.
+     *
+     * @return array - Database settings.
+     */
     function Settings(){
         // Return settings from 'Settings' class
         return Settings::GetSettings()['database'];
     }
 
+    /**
+     * Establishes a MySQL connection.
+     *
+     * @return mysqli - MySQL connection.
+     */
     function Connection() {
         // Connect with settings fetched in the constructor
         return new mysqli(

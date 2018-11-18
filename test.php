@@ -74,6 +74,10 @@ Users::IsDonor("76561198075806077");    // Returns false if not. Returns int if 
 // $user->IsDonor();                              // Returns false if not. Returns int if true. Integer represent the amount the user has donated
 
 
+/** Is a user also VIP? */
+Users::IsVIP("76561198075806077");    // returns false if not. Returns true if the user is VIP.
+// $user->IsVIP()                                // returns false if not. Returns true if the user is VIP.
+
 /** Total amount donated */
 Users::Donations(); // Returns float representing the amount donated.
 

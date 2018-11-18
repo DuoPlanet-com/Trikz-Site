@@ -49,7 +49,21 @@ class Checkout {
         $payment,
         $transactionId;
 
-
+    /**
+     * Sets up an instance of 'Checkout' for payment.
+     *
+     * Upon creating an instance of 'Checkout', the class will prepare the data
+     *     that we will be sending off to PayPal for processing. It includes data such as
+     *     the name, price, description, transaction ID, and pairs the transaction to a
+     *     'SteamUser'. This is where the transaction first will be logged.
+     *     However the data wont be sent off to PayPal until $this->Create() has been run.
+     *
+     * @param string $productName - The name of the product. (Required by PayPal)
+     * @param string $productDescription - The description of the product. (Required by PayPal)
+     * @param float $amountPrice - The price of the product.
+     * @param string $currency - The currency that the payment would deal in. Ex: "USD", "DKK", etc.
+     * @param string $steamId64 - The 64-bit steam community id as a string. Ex: "76561198075806077"
+     */
     public function __construct($productName, $productDescription, $amountPrice, $currency,$steamId64)
     {
         $id = $this->CreateID();
@@ -106,6 +120,14 @@ class Checkout {
 
     }
 
+    /**
+     * Creates a transaction for PayPal payment processing.
+     *
+     * Sends off the data set by the constructor. A transaction will be registered on PayPal's server
+     *     which then will be sent back to us, with a confirmation, upon paying.
+     *
+     * @return string - PayPal approval link. Will be the link paying users will be sent to.
+     */
     public function Create() {
         global $paypal;
         try {
@@ -116,23 +138,44 @@ class Checkout {
         return $this->payment->getApprovalLink();
     }
 
+    /**
+     * Logs the transaction and set its status to open.
+     *
+     * Inserts a row into the 'transactions' table with the Steam Community ID
+     *     of the buyer. The status of the transaction will be set to 'open', which means the
+     *     payment has not been processed or confirmed by PayPal.
+     *
+     * @param $steamId64 - The 64-bit Steam community id as a string. Ex: "76561198075806077"
+     * @param $product - The name of the product. (Required by PayPal)
+     * @param $price - The price of the product.
+     * @return mysqli_result
+     */
     function LogTransaction($steamId64,$product,$price) {
         $id = $this->transactionId;
         $sql = "INSERT INTO `transactions` (`id`,`steamid64`,`product`,`price`,`status`) VALUES ('$id','$steamId64','$product',$price,'open')";
-        var_dump($sql);
         return Database::Query($sql);
     }
 
+    /**
+     * Pseudo-randomly generates a 16-character long hexadecimal ID.
+     *
+     * @return string - 16-character long hexadecimal ID.
+     */
     function CreateID() {
         $result = "";
         $length = 16;
         for ($i=0; $i < $length; $i++) {
             $result.= dechex(mt_rand(0,$length-1));
         }
-        var_dump($result);
         return $result;
     }
 
+    /**
+     * Check if ID is already occupied by another transaction in the database.
+     *
+     * @param $id - 16-character long hexadecimal ID
+     * @return bool - Returns true if the ID has not yet been used.
+     */
     function CheckID($id) {
         $sql = "SELECT * FROM `transactions` WHERE `id` = '$id'";
         if ($query = Database::Query($sql)) {
