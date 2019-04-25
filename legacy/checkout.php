@@ -78,8 +78,10 @@ if (!$user = Users::CurrentUser()) {
 
     $id = $user->steamid;
 
+    $id = Database::Escaped($id);
+
     $sql = "SELECT * FROM vips WHERE steamid = '$id'";
-    if (Database::Query($sql)->num_rows == 0) {
+    if (Database::NonEscapedQuery($sql)->num_rows == 0) {
         try {
             $payment->create($paypal);
         } catch(Exception $e) {

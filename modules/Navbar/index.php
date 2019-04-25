@@ -26,7 +26,7 @@
                 <a class="nav-link" href="?p=donors">Donation List</a>
             </li>
             <li class="nav-item dropdown">
-                <?php  Modules::Load("SteamLogin"); ?>
+                <?php  Modules::Load("SteamLogin");  // loading the Steamlogin module ?>
             </li>
 
         </ul>

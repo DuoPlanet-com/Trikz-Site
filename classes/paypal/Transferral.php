@@ -83,12 +83,13 @@ class Transferral {
      */
     function CloseTransaction() {
         $transactionId = $this->payment->transactions[0]->invoice_number;
+        $transactionId = Database::Escaped($transactionId);
         $sql = "SELECT * FROM `transactions` WHERE `id` = '$transactionId'";
-        if ($query = Database::Query($sql)) {
+        if ($query = Database::NonEscapedQuery($sql)) {
             if ($query->num_rows == 1) {
                 if ($query->fetch_assoc()['status'] == "open") {
                     $sql2 = "UPDATE `transactions` SET `status` = 'closed' WHERE `id` = '$transactionId'";
-                    return Database::Query($sql2);
+                    return Database::NonEscapedQuery($sql2);
                 }
             }
         }
@@ -102,8 +103,9 @@ class Transferral {
      */
     function Product() {
         $transactionId = $this->payment->transactions[0]->invoice_number;
+        $transactionId = Database::Escaped($transactionId);
         $sql = "SELECT * FROM `transactions` WHERE `id` = '$transactionId'";
-        if ($query = Database::Query($sql)) {
+        if ($query = Database::NonEscapedQuery($sql)) {
             if ($query->num_rows == 1) {
                 return $query->fetch_assoc()['product'];
             }

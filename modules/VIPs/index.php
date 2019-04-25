@@ -6,15 +6,11 @@
  * Time: 11:17
  */
 
+// Find VIPs from db.
 $sql = "SELECT * FROM vips";
-
 if (!$query = Database::Query($sql)) {
     die("Unable to fetch vips");
 }
-
-
-
-
 
 ?>
 
@@ -33,21 +29,27 @@ if (!$query = Database::Query($sql)) {
         <tbody>
         <?php
 
+        // For table
         $i = 1;
+
+        // loop through each VIP
         foreach ($query as $item) {
-            $steamid = $item['steamid'];
-            $date_start = $item['timestamp_start'];
-            $date_end = $item['timestamp_end'];
-            $steamUser = new SteamUser($item['steamid64']);
-            $personaName = $steamUser->personaName;
-            $imgUrl = $steamUser->avatar;
-            $profileUrl = $steamUser->profileUrl;
+            $steamid = $item['steamid']; // Their steamid
+            $date_start = $item['timestamp_start']; // When the vip was purchased.
+            $date_end = $item['timestamp_end']; // Then the VIP expires. Note that if the user buys VIP again. This will be extended.
+            $steamUser = new SteamUser($item['steamid64']); // A SteamUser object, based on the VIP's steamid.
+            $personaName = $steamUser->personaName; // Current steam name of VIP.
+            $imgUrl = $steamUser->avatar; // The profile image of VIP.
+            $profileUrl = $steamUser->profileUrl; // A link to their profile.
+
+            // Insert row into table.
             echo "<tr>";
-            echo "<th>$i</th>";
-            echo "<td><a href='$profileUrl'><img style='border-radius: 50%' src='$imgUrl'> $personaName</a></td>";
-            echo "<td>$steamid</td>";
-            echo "<td>$date_start</td>";
-            echo "<td>$date_end</td>";
+                echo "<th>$i</th>"; // Header
+
+                echo "<td><a href='$profileUrl'><img style='border-radius: 50%' src='$imgUrl'> $personaName</a></td>";
+                echo "<td>$steamid</td>";
+                echo "<td>$date_start</td>";
+                echo "<td>$date_end</td>";
             echo "</tr>";
             $i++;
         }

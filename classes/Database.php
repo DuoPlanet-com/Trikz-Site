@@ -43,11 +43,27 @@ class Database {
      * @return mysqli_result
      */
     public static function Query($query) {
+
+        $query = self::Escaped($query);
+
         $result = mysqli_query(self::$connection,$query);
         if (!$result) {
             die("MySQL error! Failed to query ; " . $query);
         }
         return $result;
+    }
+
+    public static function NonEscapedQuery($query) {
+        $result = mysqli_query(self::$connection,$query);
+        if (!$result) {
+            die("MySQL error! Failed to query ; " . $query);
+        }
+        return $result;
+    }
+
+    public static function Escaped($string) {
+        $string = self::$connection->real_escape_string($string);
+        return $string;
     }
 
     /**

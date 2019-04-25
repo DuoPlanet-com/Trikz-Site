@@ -6,6 +6,7 @@
  * Time: 16:44
  */
 
+// Grab donors
 $sql = "SELECT * FROM `donors` ORDER BY `amount` DESC";
 if (!$query = Database::Query($sql)) {
     die("Failed to query donor table");
@@ -25,17 +26,21 @@ if (!$query = Database::Query($sql)) {
         <tbody>
         <?php
 
+        // For table.
         $i = 1;
+        // loop through query results
         foreach ($query as $item) {
-            $steamid64 = $item['steamid64'];
-            $steamUser = new SteamUser($steamid64);
-            $personaName = $steamUser->personaName;
-            $imgUrl = $steamUser->avatar;
-            $amount = $item['amount'];
-            $profileUrl = $steamUser->profileUrl;
+            $steamid64 = $item['steamid64']; // Grab steamid64
+            $steamUser = new SteamUser($steamid64); // Create a SteamUser object, grabbing data from steam servers.
+            $personaName = $steamUser->personaName; // The current persona name of the user.
+            $imgUrl = $steamUser->avatar; // The current profile image of the user.
+            $amount = $item['amount']; // The amount they have donated.
+            $profileUrl = $steamUser->profileUrl; // And a link to their profile.
+
+            // Insert a row of data into the table.
             echo "<tr>";
-            echo "<td><a href='$profileUrl'><img style='border-radius: 50%' src='$imgUrl'></a> <a href='$profileUrl'>$personaName</a></td>";
-            echo "<td>$$amount</td>";
+                echo "<td><a href='$profileUrl'><img style='border-radius: 50%' src='$imgUrl'></a> <a href='$profileUrl'>$personaName</a></td>";
+                echo "<td>$$amount</td>";
             echo "</tr>";
             $i++;
         }

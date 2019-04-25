@@ -16,28 +16,30 @@ if (!$user = Users::CurrentUser()) {
         $expirationDate = Users::VIPExpirationDate($user->steamid64);
         $nextDate = new DateTime($expirationDate);
         $nextDate->add(new DateInterval('P' . $days . 'D'));
-        $nextDateStamp = $nextDate->format("Y-m-d H:m:s");
-        $sql = "UPDATE `vips` SET `timestamp_end` = '$nextDateStamp.000000' WHERE `steamid`='$id'";
+        $nextDateStamp = $nextDate->format("Y-m-d H:m:s") . ".000000";
+        $sql = "UPDATE `vips` SET `timestamp_end` = '$nextDateStamp' WHERE `steamid`='$id'";
         if ($transferral->Execute()) {
-            if (Database::Query($sql)) {
+            if (Database::NonEscapedQuery($sql)) {
                 header("Location:index.php?ps=".$_GET['success']);
             } else {
                 die("Failed to update user VIP date");
             }
         }
     } else {
+        $id = Database::Escaped($id);
         $sql = "SELECT * FROM vips WHERE steamid = '$id'";
-        if (($query = Database::Query($sql))->num_rows == 0) {
+        if (($query = Database::NonEscapedQuery($sql))->num_rows == 0) {
             if ($transferral->Execute()) {
                 if ($_GET['success'] == "true") {
                     $dateTime = new DateTime();
                     $days = (int) Settings::GetSettings()['products']['VIP']['days'];
                     $nextTime = new DateTime();
                     $nextTime->add(new DateInterval('P' . $days . 'D'));
-                    $dateTimeStamp = $dateTime->format("Y-m-d H:m:s");
-                    $nextTimeStamp = $nextTime->format("Y-m-d H:m:s");
+                    $dateTimeStamp = $dateTime->format("Y-m-d H:m:s") . ".000000";
+                    $nextTimeStamp = $nextTime->format("Y-m-d H:m:s") . ".000000";
                     $sid64 = $user->steamid64;
-                    $sql = "INSERT INTO vips (steamid64, steamid,timestamp_start,timestamp_end) VALUES ('$sid64','$id','$dateTimeStamp.000000' ,'$nextTimeStamp.000000')";
+
+                    $sql = "INSERT INTO vips (steamid64, steamid,timestamp_start,timestamp_end) VALUES ('$sid64','$id','$dateTimeStamp' ,'$nextTimeStamp')";
                     if (!DataBase::Query($sql)) {
                         $_GET['success'] = "false";
                     }

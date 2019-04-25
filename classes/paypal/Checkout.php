@@ -152,8 +152,13 @@ class Checkout {
      */
     function LogTransaction($steamId64,$product,$price) {
         $id = $this->transactionId;
-        $sql = "INSERT INTO `transactions` (`id`,`steamid64`,`product`,`price`,`status`) VALUES ('$id','$steamId64','$product',$price,'open')";
-        return Database::Query($sql);
+        // Escaping variables
+        $steamId64 = Database::Escaped($steamId64);
+        $product = Database::Escaped($product);
+        $price = Database::Escaped($price);
+        $sql = "INSERT INTO `transactions` (`id`,`steamid64`,`product`,`price`,`status`) VALUES ($id,$steamId64,'$product',$price,'open')";
+
+        return Database::NonEscapedQuery($sql);
     }
 
     /**
@@ -177,8 +182,9 @@ class Checkout {
      * @return bool - Returns true if the ID has not yet been used.
      */
     function CheckID($id) {
+        $id = Database::Escaped($id);
         $sql = "SELECT * FROM `transactions` WHERE `id` = '$id'";
-        if ($query = Database::Query($sql)) {
+        if ($query = Database::NonEscapedQuery($sql)) {
             if ($query->num_rows == 0) {
                 return true;
             }

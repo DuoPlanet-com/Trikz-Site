@@ -6,7 +6,7 @@
  * Time: 13:07
  */
 
-
+// Check if a user is logged in. And if so, store the user as variable.
 if ($user = Users::CurrentUser()) {
 
     ?>

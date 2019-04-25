@@ -96,7 +96,7 @@ class SteamUser {
 
         // Set SQL statement
         $steamid_64 = $this->steamid64;
-        $sql = "SELECT * FROM `donors` WHERE `steamid64` = '$steamid_64'";
+        $sql = "SELECT * FROM `donors` WHERE `steamid64` = $steamid_64";
 
         // Query database
         if ($query = Database::Query($sql)) {

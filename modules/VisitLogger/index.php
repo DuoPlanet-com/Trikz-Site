@@ -33,9 +33,16 @@ if ($validate) {
     $pageName = $page->PageString();
     $ip = $_SERVER['REMOTE_ADDR'];
 
-    $sql = "INSERT INTO `visits`(`steamid`, `type`, `page`, `address`) VALUES ('$steamid64','$type','$pageName','$ip')";
+    if ($ip == "::1") {
+        $ip = "Localhost";
+    }
+    $steamid64 = Database::Escaped($steamid64);
+    $type = Database::Escaped($type);
+    $pageName = Database::Escaped($pageName);
 
-    if (!Database::Query($sql)) {
+    $sql = "INSERT INTO `visits` (`steamid`, `type`, `page`, `address`) VALUES ('$steamid64', '$type', '$pageName', '$ip')";
+
+    if (!Database::NonEscapedQuery($sql)) {
 
         die("Unable to log! Query failed");
     }

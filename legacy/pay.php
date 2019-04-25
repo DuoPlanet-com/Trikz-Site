@@ -44,9 +44,11 @@ if (!$user = Users::CurrentUser()) {
 
     $id = $user->steamid;
 
+    $id = Database::Escaped($id);
+
     $sql = "SELECT * FROM vips WHERE steamid = '$id'";
 
-    if (($query = Database::Query($sql))->num_rows == 0) {
+    if (($query = Database::NonEscapedQuery($sql))->num_rows == 0) {
         try {
             $result = $payment->execute($execute,$paypal);
         } catch (Exception $e) {
@@ -57,11 +59,14 @@ if (!$user = Users::CurrentUser()) {
             $days = (int) Settings::GetSettings()['VIP']['days'];
             $nextTime = new DateTime();
             $nextTime->add(new DateInterval('P' . $days . 'D'));
-            $dateTimeStamp = $dateTime->format("Y-m-d H:m:s");
-            $nextTimeStamp = $nextTime->format("Y-m-d H:m:s");
+            $dateTimeStamp = $dateTime->format("Y-m-d H:m:s") . ".000000";
+            $nextTimeStamp = $nextTime->format("Y-m-d H:m:s") . ".000000";
             $sid64 = $user->steamid64;
-            $sql = "INSERT INTO vips (steamid64, steamid,timestamp_start,timestamp_end) VALUES ('$sid64','$id','$dateTimeStamp.000000' ,'$nextTimeStamp.000000')";
-            if (!DataBase::Query($sql)) {
+
+            $sid64 = Database::Escaped($sid64);
+
+            $sql = "INSERT INTO vips (steamid64, steamid,timestamp_start,timestamp_end) VALUES ('$sid64','$id','$dateTimeStamp','$nextTimeStamp')";
+            if (!DataBase::NonEscapedQuery($sql)) {
                 $_GET['success'] = "false";
             }
             header("Location:index.php?ps=".$_GET['success']);

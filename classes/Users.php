@@ -58,7 +58,7 @@ class Users {
      * @return bool - Returns true if the user is registered.
      */
     public static function Registered($steamid64) {
-        $sql = "SELECT * FROM registered_users WHERE steamid = '$steamid64'";
+        $sql = "SELECT * FROM registered_users WHERE steamid = $steamid64";
         if (Database::Query($sql)->num_rows > 0) {
             return true;
         }
@@ -97,7 +97,7 @@ class Users {
      */
     public static function Register($steamid64) {
         if (!self::Registered($steamid64)) {
-            $sql = "INSERT INTO registered_users (steamid) VALUES ('$steamid64')";
+            $sql = "INSERT INTO registered_users (steamid) VALUES ($steamid64)";
             return Database::Query($sql);
         }
         return false;
@@ -169,14 +169,14 @@ class Users {
      * @return bool
      */
     public static function IsVIP($steamid_64) {
-        $sql = "SELECT * FROM `vips` WHERE `steamid64` = '$steamid_64'";
+        $sql = "SELECT * FROM `vips` WHERE `steamid64` = $steamid_64";
         if ($query = Database::Query($sql)) {
             if ($query->num_rows == 1) {
                 $row = $query->fetch_assoc();
                 if (new DateTime() < new DateTime($row['timestamp_end'])) {
                     return true;
                 } else {
-                    $sql2 = "DELETE FROM `vips` WHERE `steamid64` = '$steamid_64'";
+                    $sql2 = "DELETE FROM `vips` WHERE `steamid64` = $steamid_64";
                     if (!Database::Query($sql2)) {
                         die("Unable to remove expired VIP");
                     }
@@ -193,14 +193,14 @@ class Users {
      * @return string - MySQL timestamp. Returns 'expired' if expiration date is exceeded.
      */
     public static function VIPExpirationDate($steamid_64) {
-        $sql = "SELECT * FROM `vips` WHERE `steamid64` = '$steamid_64'";
+        $sql = "SELECT * FROM `vips` WHERE `steamid64` = $steamid_64";
         if ($query = Database::Query($sql)) {
             if ($query->num_rows == 1) {
                 $row = $query->fetch_assoc();
                 if (new DateTime() < new DateTime($row['timestamp_end'])) {
                     return $row['timestamp_end'];
                 } else {
-                    $sql2 = "DELETE FROM `vips` WHERE `steamid64` = '$steamid_64'";
+                    $sql2 = "DELETE FROM `vips` WHERE `steamid64` = $steamid_64";
                     if (!Database::Query($sql2)) {
                         die("Unable to remove expired VIP");
                     }
@@ -217,7 +217,7 @@ class Users {
      * @return float|bool - The amount the user has donated. Returns false if the user has never donated.
      */
     public static function IsDonor($steamid_64) {
-        $sql = "SELECT * FROM `donors` WHERE `steamid64` = '$steamid_64'";
+        $sql = "SELECT * FROM `donors` WHERE `steamid64` = $steamid_64";
         if ($query = Database::Query($sql)) {
             if ($query->num_rows > 0) {
                 $row = $query->fetch_assoc();
@@ -257,8 +257,9 @@ class Users {
      */
     public static function Revenue($productString) {
         $amount = 0;
+        $productString = Database::Escaped($productString);
         $sql = "SELECT * FROM `transactions` WHERE `product` = '$productString'";
-        if ($query = Database::Query($sql)) {
+        if ($query = Database::NonEscapedQuery($sql)) {
             foreach ($query as $row) {
                 if ($row['status'] == "closed") {
                     $amount+= $row['price'];
